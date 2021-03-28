@@ -4,7 +4,9 @@ import { } from 'react-bootstrap';
 
 
 const AllPosts = () => {
-    // testing
+    // testing again
+
+    
     return (
         <div>
             <h1> AllPosts.js </h1>
