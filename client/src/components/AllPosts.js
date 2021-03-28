@@ -18,8 +18,8 @@ const AllPosts = (props) => {
                 console.log(err);
             });
     }, []);
-    
-//Waiting for Controllers to be wired 
+
+//Waiting for Controllers/db to be wired 
     return (
         <div className="cuteinsurgence-body-wrapper">
         <div className="AllPosts-post-display">
