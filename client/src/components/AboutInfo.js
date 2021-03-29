@@ -1,6 +1,5 @@
 import React from 'react';
-import axios from 'axios';
-import {Container, Row, Col, Media, Image} from 'react-bootstrap';
+import {Container, Row, Col, Media} from 'react-bootstrap';
 
 
 const AboutInfo = () =>{

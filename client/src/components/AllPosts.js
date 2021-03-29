@@ -9,7 +9,7 @@ const AllPosts = (props) => {
     const [allPosts, setAllPosts] = useState([]);
     useEffect(() => {
         axios
-            .get("http://localhost:8000/CuteInsurgence")
+            .get("http://localhost:8000/cuteinsurgence")
             .then((response) => {
                 console.log(response.data);
                 setAllPosts(response.data);
