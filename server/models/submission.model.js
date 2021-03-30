@@ -8,6 +8,7 @@ const SubmissionSchema = new mongoose.Schema(
     },
     category: {
       type: String,
+      enum: ['Farm Animals', 'Wildlife', 'Dogs', 'Cats', 'Reptiles', 'Fish', 'Birds', 'Bugs', 'Rodents'],
       required: [true, "Please enter a category for your submission"],
     },
 
