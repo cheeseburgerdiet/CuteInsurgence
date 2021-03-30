@@ -15,7 +15,7 @@ function App() {
         <Router>
           <AllPosts path= '/cuteinsurgence' />
           <AboutUs path= '/aboutus' />
-          <OnePost path= '/post/:id' />
+          <OnePost path= '/posts/:id' />
           <AdminLogin path='/admin/login'/>
           <Admin path= '/admin/home' />
         </Router>

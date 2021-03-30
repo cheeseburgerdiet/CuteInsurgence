@@ -49,9 +49,10 @@ const OnePost = (props) => {
     
         <div className="cuteinsurgence-single-btns-arrangment">
         <button className="cuteinsurgence-single-post-btns"
-                onClick={() => navigate(post._id)}
+                onClick={() => navigate('/aboutus')}
+                
             >update</button>
-            <Button  onClick={() => deletePost(post._id)}>Delete</Button>
+            <button  onClick={() => deletePost(post._id)}>Delete</button>
         </div>
         </div>
         </div>
