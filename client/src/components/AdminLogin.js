@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-<<<<<<< HEAD
 import { navigate, Link, } from '@reach/router';
 import { Form, Row, Col, Container, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
-=======
-import {Link} from '@reach/router';
-import {Form, Button } from 'react-bootstrap';
-
->>>>>>> a47024cd6b21bdd6f9b3effda4b216d1f4373c70
 
 
 const AdminLogin = (props) => {
