@@ -1,18 +1,23 @@
 import React from 'react';
 import AboutInfo from '../components/AboutInfo';
 import SubmissionForm from '../components/SubmissionForm'
-import {} from 'react-bootstrap';
+import { Container, Row, Col} from 'react-bootstrap';
 
-const AboutUs = () =>{
-    return(
+const AboutUs = () => {
+    return (
         <div>
-            <h1>Views/AboutUs.js</h1>
-                <div style= {{display: "flex", flexFlow: "row nowrap", justifyContent: "space-around", alignContent: "baseline", border: "3px solid black"
-                }}>
-                    <AboutInfo />
-                    <hr/>
-                    <SubmissionForm />
-                </div>
+            <Container>
+                <Row> 
+                    <Col>
+                        <AboutInfo />
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <SubmissionForm />
+                    </Col>
+                </Row>
+            </Container>
         </div>
     )
 };
