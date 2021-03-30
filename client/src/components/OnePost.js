@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, navigate } from '@reach/router';
-import { } from 'react-bootstrap';
+import { Button} from 'react-bootstrap';
 
 const OnePost = (props) => {
 
@@ -11,7 +11,7 @@ const OnePost = (props) => {
 
     useEffect(() => {
         axios
-        .get("http://localhost:8000/CuteInsurgence/" + id)
+        .get("http://localhost:8000/api/posts/" + id)
             .then((res) => {
                 const singlePost = res.data;
                 console.log(singlePost);
@@ -22,7 +22,7 @@ const OnePost = (props) => {
 
 
     const deletePost = (id) => {
-        axios.delete("http://localhost:8000/post/" + id)
+        axios.delete("http://localhost:8000/api/posts/" + id)
             .then((res) => {
                 const deletedPost = res.data;
                 console.log(deletedPost);
@@ -34,43 +34,24 @@ const OnePost = (props) => {
             });
     }
 
-
-
-
-
-
-
-
-    //Waiting for Controllers/db to be wired 
     return (
         <div className="cuteinsurgence-body-wrapper">
             <div className="cuteinsurgence-single-post">
-            <h1> A Big Title (filler) check code  {post.title} </h1>
-            <p>Category: Display category or not?</p>
-            <p>Image & or Video</p>
+            <h1> {post.title} </h1>
             <img className="post-display-img"
                 src={post.imageUrl}
                 alt={post.title}
             />
 
-            
-        {/* This is a test */}  
-
-
-
         <div>
             {post.description}
-            Description:
-            SE Asian Tarsier, Malaysian Archipelago.
-            Tarsiers are haplorrhine primates of the family Tarsiidae, which is itself the lone extant family within the infraorder Tarsiiformes. Although the group was once more widespread, all of its species living today are found in the islands of Southeast
-            
         </div>
-    {/* Need the path for buttons */}
+    
         <div className="cuteinsurgence-single-btns-arrangment">
         <button className="cuteinsurgence-single-post-btns"
-                onClick={() => navigate(`/post/${post._id}/edit`)}
+                onClick={() => navigate(post._id)}
             >update</button>
-            <button>Delete</button>
+            <Button  onClick={() => deletePost(post._id)}>Delete</Button>
         </div>
         </div>
         </div>
@@ -78,8 +59,6 @@ const OnePost = (props) => {
 };
 
 export default OnePost;
-
-//.get("http://localhost:8000/CuteInsurgence/post/:id"
 
 // {
 //     title: {
