@@ -2,12 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Form, Button, Nav} from 'react-bootstrap';
 import PostForm from '../components/PostForm';
 import AllSubmissions from '../components/AllSubmissions';
-<<<<<<< Updated upstream
 import {} from 'react-bootstrap';
-=======
-import axios from 'axios';
-import { navigate } from '@reach/router';
->>>>>>> Stashed changes
 
 
 const Admin = () =>{
