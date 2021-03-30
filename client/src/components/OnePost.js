@@ -43,6 +43,7 @@ const OnePost = (props) => {
 
     //Waiting for Controllers/db to be wired 
     return (
+       
         <div className="cuteinsurgence-body-wrapper">
             <div className="cuteinsurgence-single-post">
             <h1> A Big Title (filler) check code  {post.title} </h1>

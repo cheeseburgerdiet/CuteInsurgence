@@ -7,6 +7,7 @@ import AboutUs from './views/AboutUs';
 import OnePost from './components/OnePost';
 import AdminLogin from './components/AdminLogin';
 import Admin from './views/Admin';
+import UpdatePost from './components/UpdatePost';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <Router>
           <AllPosts path= '/cuteinsurgence' />
           <AboutUs path= '/aboutus' />
-          <OnePost path= '/post/:id' />
+          <OnePost path= '/posts/:id' />
+          <UpdatePost path='/posts/:id/edit' />
           <AdminLogin path='/admin/login'/>
           <Admin path= '/admin/home' />
         </Router>
