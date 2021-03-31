@@ -4,8 +4,8 @@ import { Link, navigate } from '@reach/router';
 import { Button, Image} from 'react-bootstrap';
 
 const OnePost = (props) => {
+    const {id} = props;
 
-    const { id } = props;
     const [post, setPost] = useState({});
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const OnePost = (props) => {
     return (
         <div className="cuteinsurgence-body-wrapper">
             <div className="cuteinsurgence-single-post">
-            <Image  src={post.imageURL} alt={post.title} fluid />
+            <Image  src= {post.imageURL} alt={post.title} fluid />
                 <h1> {post.title} </h1>
                 <div className="post-description">
                     {post.description}

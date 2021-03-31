@@ -3,8 +3,7 @@ import axios from 'axios';
 import {Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { navigate } from '@reach/router';
 
-const PostForm = (props) =>{
-    const {id} = props;
+const PostForm = () =>{
     const [state, setState] = useState({
         category: '',
         imageURL: '',
