@@ -7,6 +7,7 @@ import AboutUs from './views/AboutUs';
 import OnePost from './components/OnePost';
 import AdminLogin from './components/AdminLogin';
 import Admin from './views/Admin';
+import UpdatePost from './components/UpdatePost';
 
 function App() {
   return (

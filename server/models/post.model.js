@@ -13,7 +13,7 @@ const PostSchema = new mongoose.Schema(
 
             category: {
                 type: String,
-
+                enum: ['Farm Animals', 'Wildlife', 'Dogs', 'Cats', 'Reptiles', 'Fish', 'Birds', 'Bugs', 'Rodents'],
             },
     
             imageUrl: {

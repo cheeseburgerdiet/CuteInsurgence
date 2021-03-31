@@ -35,6 +35,7 @@ const OnePost = (props) => {
     }
 
     return (
+       
         <div className="cuteinsurgence-body-wrapper">
             <div className="cuteinsurgence-single-post">
             <h1> {post.title} </h1>
