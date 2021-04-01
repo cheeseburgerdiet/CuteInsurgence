@@ -7,6 +7,7 @@ import DropDown from './DropDown';
 const AllPosts = (props) => {
 
     const [allPosts, setAllPosts] = useState([]);
+
     const [categoryType, setCategoryType] = useState('All Cuties');
     useEffect(() => {
         axios
@@ -19,6 +20,7 @@ const AllPosts = (props) => {
                 console.log(err);
             });
     }, []);
+
 
     return (
         <div className='w-100 mx-auto p-2 px-4 border border-dark'>
@@ -81,11 +83,10 @@ const AllPosts = (props) => {
                                 </div>
                             ))
                         }
-
                     </div>
                     : <div>
                         {
-                            allPosts.map((element, index) => (
+                            allPosts.filter(post => post.category === categoryType).map((element, index) => (
                                 <div key={index} className='border border-dark mb-2 p-1'>
                                     <Container>
                                         <Row>
@@ -103,16 +104,25 @@ const AllPosts = (props) => {
                                 </div>
                             ))
                         }
-
                     </div>
                 }
             </div>
-
         </div>
     )
 }
 
 export default AllPosts;
+
+
+
+
+
+{/* allPosts.filter(post => post.category === categoryType).map(post => { // Do something here }); */ }
+
+
+
+
+
 
 
 
