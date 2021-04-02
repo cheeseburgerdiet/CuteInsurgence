@@ -40,10 +40,10 @@ const submitForm = (e) => {
 return(
     <div>
         <Container className='w-100 mx-auto p-2 px-4 border border-dark'>
-        <p>Post Form</p>
+        <p className='mb-1'>Post Form</p>
             <Form onSubmit={submitForm}>
                 <Row>
-                    <Col className='p-2 m-2'>
+                    <Col className='p-2'>
                         <Form.Group as={Row} controlId='formTitle'>
                             <Form.Label column sm="2">Title</Form.Label>
                             <Col sm={10}>
@@ -52,8 +52,8 @@ return(
                             </Col>
                         </Form.Group>
                         <Form.Group as= {Row} controlId='formCategory'>
-                            <Form.Label >Category</Form.Label>
-                            <Col sm={8}>
+                            <Form.Label column sm="2">Category</Form.Label>
+                            <Col sm={10}>
                                 <Form.Control as="select" type='category' name="category" value= {state.category} onChange={(e) => onChange(e)} placeholder='Category'>
                                     <option>Select Category</option>
                                     <option value= 'Farm Animals'>Farm Animals</option>
@@ -69,23 +69,22 @@ return(
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId='formImageURL'>
-                            <Form.Label >imageURL</Form.Label>
-                            <Col sm={8}>
+                            <Form.Label column sm="2">imageURL</Form.Label>
+                            <Col sm={10}>
                                 <Form.Control type='imageURL' name="imageURL" value = {state.imageURL} onChange={(e) => onChange(e)}  placeholder='imageURL' />
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId='formVideoURL'>
-                            <Form.Label >videoURL</Form.Label>
-                            <Col sm={8}>
+                            <Form.Label column sm="2" >videoURL</Form.Label>
+                            <Col sm={10}>
                                 <Form.Control type='videoURL' name="videoURL" value = {state.videoURL} onChange={(e) => onChange(e)} placeholder='videoURL' />
                             </Col>
                         </Form.Group>
                         <Form.Group className=' border border-dark' controlId='textarea'>
-                            <Form.Control as="textarea" rows={10} type='description' name="description" value = {state.description} onChange={(e) => onChange(e)}  placeholder='description' />
+                            <Form.Control as="textarea" rows={7} type='description' name="description" value = {state.description} onChange={(e) => onChange(e)}  placeholder='description' />
                         </Form.Group>
                         <Button variant='success' type='submit'>submit</Button>
                     </Col>
-                    
                 </Row>
             </Form>
         </Container>

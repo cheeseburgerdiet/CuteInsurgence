@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Container, Row, Col, Form, Button, Dropdown, DropdownButton, Image } from 'react-bootstrap';
 import { navigate } from '@reach/router';
 
+const DropDown = (props) => {
 const AllSubmissions = (props) => {
 
 const [allSubmissions, setAllSubmissions] = useState([]);
@@ -10,7 +11,7 @@ const [allSortSubmissions, setAllSortSubmissions] = useState([]);
 const [categoryType, setCategoryType] = useState('Sort by');
 useEffect(() => {
     axios
-        .get("http://localhost:8000/api/submissions")
+        .get("http://localhost:8000/api/posts")
         .then((response) => {
             console.log('response.data');
             console.log(response.data);
@@ -23,7 +24,7 @@ useEffect(() => {
 
 useEffect(() => {
     axios
-        .get(`http://localhost:8000/api/submissions/category/${categoryType}`)
+        .get(`http://localhost:8000/api/posts/category/${categoryType}`)
         .then((response) => {
             console.log('response.data');
             console.log(response.data);
@@ -99,4 +100,4 @@ return (
 )
 };
 
-export default AllSubmissions;
+export default DropDown;

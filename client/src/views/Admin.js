@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Form, Button, Nav } from 'react-bootstrap';
+import { Container, Row, Col, Nav } from 'react-bootstrap';
 import PostForm from '../components/PostForm';
 import AllSubmissions from '../components/AllSubmissions';
 
@@ -9,7 +9,6 @@ const Admin = () => {
     return (
         <div >
             <Container className='cuteinsurgence-single-post'>
-
                 <Nav className="justify-content-end">
                     <Nav.Item  >
                         <Nav.Link eventKey="link-2" href=" /cuteinsurgence">Logout</Nav.Link>
@@ -17,10 +16,10 @@ const Admin = () => {
                 </Nav>
                 <Container className='w-100 mx-auto'>
                     <Row>
-                        <Col className='post-form-admin'>
+                        <Col className='p-2 m-2 post-form-admin'>
                             <PostForm />
                         </Col>
-                        <Col className='p-2 m-2 border'>
+                        <Col className='p-2 m-2'>
                             <AllSubmissions />
                         </Col>
                     </Row>
