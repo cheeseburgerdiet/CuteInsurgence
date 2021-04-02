@@ -36,8 +36,7 @@ const AllPosts = (props) => {
                 <option value='Bugs'>Bugs</option>
                 <option value='Rodents'>Rodents</option>
             </Form.Control>
-
-
+{/* Test */}
             <div>
                 {categoryType === 'All Cuties' ?
                     <div>
