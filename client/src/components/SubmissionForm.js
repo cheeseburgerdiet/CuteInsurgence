@@ -32,6 +32,7 @@ const SubmissionForm = () => {
                 } else {
                     console.log(res.data._id);
                     setState({...state, 
+                        title: '',
                         category: '',
                         imageURL: '',
                         videoURL: '',

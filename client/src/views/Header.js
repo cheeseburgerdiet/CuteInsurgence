@@ -5,14 +5,14 @@ import {Jumbotron, Container, Row, Col, Image, Nav} from 'react-bootstrap';
 const Header = () =>{
     return(
         <div>
-            <Container className='cuteinsurgence-single-post'>
+            <Container className=''>
                 <Nav className="justify-content-end">
                     <Nav.Item  >
                         <Nav.Link eventKey="link-2" href=" /admin/login">Admin</Nav.Link>
                     </Nav.Item>
                 </Nav>
                 <div style = {{fontFamily: 'Underdog'}}>
-                    <Jumbotron rounded= "true" fluid>
+                    <Jumbotron className='header-all' rounded= "true" fluid>
                         <Container>
                             <Row>
                                 <Col xs={6} md={4}>

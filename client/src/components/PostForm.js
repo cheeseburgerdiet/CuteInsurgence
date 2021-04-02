@@ -5,6 +5,7 @@ import { navigate } from '@reach/router';
 
 const PostForm = () =>{
     const [state, setState] = useState({
+        title: '',
         category: '',
         imageURL: '',
         videoURL: '',

@@ -23,7 +23,7 @@ const AllPosts = (props) => {
 
 
     return (
-        <div className='w-100 mx-auto p-2 px-4 border border-dark'>
+        <div className='cuteinsurgence-single-post'>
             <Form.Control className='success w-50 mx-auto' as="select" type='category' name="category" value={categoryType} onChange={(e) => setCategoryType(e.target.value)} placeholder='Category' required>
                 <option>All Cuties</option>
                 <option value='Farm Animals'>Farm Animals</option>
@@ -43,19 +43,20 @@ const AllPosts = (props) => {
                     <div>
                         {
                             allPosts.map((post, index) => (
-                                <div key={index} className='border border-dark mb-2 p-1'>
+                                <div key={index} className='posts-all'>
                                     <Container>
                                         <Row>
                                             <Col xs={6} md={4}>
                                                 <Image src={post.imageURL} thumbnail />
                                             </Col>
                                             <Col xs={6} md={4}>
-                                                <p>{post.category}</p>
+                                                <p className='category-font'>{post.title}</p>
+                                                <p className='category-font'>{`Category: ${post.category}`}</p>
                                                 <p>{post.description}</p>
                                             </Col>
                                         </Row>
                                         <p>Submitted by: {post.user}</p>
-                                        <Button variant="primary" onClick={() => navigate(`/posts/${post._id}`)}>View Post </Button>
+                                        <Button className="view-post-btn" variant="primary" onClick={() => navigate(`/posts/${post._id}`)}>View Post </Button>
                                     </Container>
                                 </div>
                             ))
@@ -76,7 +77,7 @@ const AllPosts = (props) => {
                                             </Col>
                                         </Row>
                                         <p>Submitted by: {post.user}</p>
-                                        {/* <Button className='p-1 m-1' variant='secondary' >Delete</Button> */}
+
                                     </Container>
                                 </div>
                             ))
