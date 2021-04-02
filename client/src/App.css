@@ -32,6 +32,25 @@
   color: #61dafb;
 }
 
+
+.posts-all {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin: 45px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.posts-all-btn {
+  margin: 15px;
+ 
+}
+
+
+.header-all {
+  height: 330px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -57,6 +76,10 @@
 
 }
 
+.view-post-btn {
+  color: black;
+}
+
 .cuteinsurgence-single-post {
   width: auto;
   height: auto;
@@ -76,10 +99,13 @@ margin-bottom: 25px;
 font-weight: bold;
 }
 
-
+.category-font {
+  font-weight: bold;
+}
 
 .cuteinsurgence-single-post-btns {
   margin: 5px;
+ 
 }
 
 .post-display-title {

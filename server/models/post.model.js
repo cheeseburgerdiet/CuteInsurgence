@@ -21,6 +21,10 @@ const PostSchema = new mongoose.Schema(
                 required: [true, 'You must submit a image URL']
             },
 
+            user: {
+                type: String ,
+            },
+
             videoURL: {
                 type: String,
             },
