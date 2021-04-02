@@ -5,7 +5,7 @@ import {Jumbotron, Container, Row, Col, Image, Nav} from 'react-bootstrap';
 const Header = () =>{
     return(
         <div>
-            <Container>
+            <Container className='cuteinsurgence-single-post'>
                 <Nav className="justify-content-end">
                     <Nav.Item  >
                         <Nav.Link eventKey="link-2" href=" /admin/login">Admin</Nav.Link>

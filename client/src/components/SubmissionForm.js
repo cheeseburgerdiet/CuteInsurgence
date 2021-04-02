@@ -43,6 +43,7 @@ const SubmissionForm = () => {
             })
             .catch((err) => {
                 console.log(err);
+                // setErrs(err.data.errors)
             });
         };
     //end submitForm
@@ -63,7 +64,7 @@ const SubmissionForm = () => {
                             <Form.Group as={Row} controlId='formCategory'>
                                 <Form.Label column sm="2">Category</Form.Label>
                                 <Col sm="10">
-                                    <Form.Control as="select" type='category' name="category" value= {state.category} onChange={(e) => onChange(e)} placeholder='Category' required>
+                                    <Form.Control as="select" type='category' name="category" value= {state.category} onChange={(e) => onChange(e)} placeholder='Category'>
                                         <option>Select Category</option>
                                         <option value= 'Farm Animals'>Farm Animals</option>
                                         <option value= 'Wildlife'>Wildlife</option>
@@ -93,7 +94,7 @@ const SubmissionForm = () => {
                             <Form.Group as={Row} controlId='formUser'>
                                 <Form.Label column sm="2">User</Form.Label>
                                 <Col sm="10">
-                                    <Form.Control type='user' name="user" value= {state.user} onChange={(e) => onChange(e)} placeholder='your name/nickname' required />
+                                    <Form.Control type='user' name="user" value= {state.user} onChange={(e) => onChange(e)} placeholder='your name/nickname'  />
                                 </Col>
                             </Form.Group>
                         </Col>

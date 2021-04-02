@@ -16,8 +16,9 @@ const PostSchema = new mongoose.Schema(
                 enum: ['Farm Animals', 'Wildlife', 'Dogs', 'Cats', 'Reptiles', 'Fish', 'Birds', 'Bugs', 'Rodents'],
             },
     
-            imageUrl: {
+            imageURL: {
                 type: String,
+                required: [true, 'You must submit a image URL']
             },
 
             videoURL: {

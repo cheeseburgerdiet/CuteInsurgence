@@ -6,7 +6,7 @@ import { Container, Row, Col} from 'react-bootstrap';
 const AboutUs = () => {
     return (
         <div>
-            <Container>
+            <Container className= 'cuteinsurgence-single-post'>
                 <Row> 
                     <Col>
                         <AboutInfo />

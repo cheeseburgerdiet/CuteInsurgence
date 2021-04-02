@@ -42,42 +42,50 @@
 /* ANTONIO'S SECTION: AllPosts-post-display */
 
 .cuteinsurgence-body-wrapper {
-  border: solid 3px orange;
+ 
   margin: 15px;
-  height: 100vh;
 }
 
 
 
 /* This is the all content inside of the single post */
 .AllPosts-post-display {
-  border: 1px solid black;
-  height: 250px;
-  width: 475px;
-  display: inline-block;
+
   margin: 25px;
+
 }
 
 .cuteinsurgence-single-post {
-  border: 1px solid black;
-  width: 700px;
-  display: inline-block;
+  width: auto;
+  height: auto;
   margin: 25px;
   padding: 15px;
-
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+}
+.post-form-admin {
+margin-right: 5px;
 }
 
+.post-description {
+width: 450px;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 25px;
+font-weight: bold;
+}
+
+
+
+.cuteinsurgence-single-post-btns {
+  margin: 5px;
+}
 
 .post-display-title {
-
+font-weight: bold;
 }
 
-.post-display-img {
-
+.post-display-category {
+  font-style: oblique;
 }
 
-
-.post-display-viewpost-btn {
-
-}
 
