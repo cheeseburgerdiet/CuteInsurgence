@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   font-family: 'Roboto', sans-serif;
-  
 }
 
 .App-logo {
@@ -14,7 +13,10 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.myscroll {
+  height:445px;
+  overflow-y: scroll;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
