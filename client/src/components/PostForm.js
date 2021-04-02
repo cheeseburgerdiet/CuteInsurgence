@@ -82,7 +82,7 @@ return(
                         <Form.Group className=' border border-dark m-2' controlId='textarea'>
                             <Form.Control as="textarea" rows={7} type='description' name="description" value = {state.description} onChange={(e) => onChange(e)}  placeholder='description' />
                         </Form.Group>
-                        <Button className='m-0' variant='success' type='submit'>submit</Button>
+                        <Button variant='success' type='submit'>submit</Button>
                     </Col>
                 </Row>
             </Form>
