@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container, Row, Col, Form, Button, Image } from 'react-bootstrap';
+import { navigate } from '@reach/router';
+
 const AllSubmissions = (props) => {
 
     const [allSubmissions, setAllSubmissions] = useState([]);
@@ -17,6 +19,18 @@ const AllSubmissions = (props) => {
                 console.log(err);
             });
     }, []);
+
+    const deleteSubmission = (id) => {
+        axios.delete(`http://localhost:8000/api/submissions/${id}`)
+            .then((res) => {
+                const deletedsub = res.data;
+                console.log(deletedsub);
+                navigate('/cuteinsurgence')
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }//end delete
 
     return (
         <div className='w-100 mx-auto p-2 px-4 border border-dark'>
@@ -48,7 +62,7 @@ const AllSubmissions = (props) => {
                                         </Col>
                                     </Row>
                                     <p>Submitted by: {element.user}</p>
-                                    <Button className='p-1 m-1' variant='secondary' >Delete</Button>
+                                    <Button className='p-1 m-1' variant='secondary' onClick={() => deleteSubmission(element._id)} >Delete</Button>
                                 </Container>
                             </div>
                         ))
@@ -70,7 +84,7 @@ const AllSubmissions = (props) => {
                                         </Col>
                                     </Row>
                                     <p>Submitted by: {element.user}</p>
-                                    <Button className='p-1 m-1' variant='secondary' >Delete</Button>
+                                    <Button className='p-1 m-1' variant='secondary' onClick={() => deleteSubmission(element._id)} >Delete</Button>
                                 </Container>
                             </div>
                         ))
