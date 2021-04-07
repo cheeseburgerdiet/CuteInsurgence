@@ -81,7 +81,11 @@ const OnePost = (props) => {
                             <div className="right-align">
                                 <a className="btn-floating btn-large cyan pulse" style={{marginRight:"40px", marginBottom:"20px"}} href={`/admin/update/${post._id}`}><i className="material-icons">edit</i></a>
                             </div>
-                            <button onClick={() => deletePost(post._id)}>Delete</button>
+                            <button 
+                                style={{ marginBottom: "20px", borderRadius: "16px" }}
+                                className="btn btn-small pink darken-1 waves-effect waves-light"
+                                onClick={() => deletePost(post._id)}>Delete
+                            </button>
                     </Col>
                 </Row>
         </div>
