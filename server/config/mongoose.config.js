@@ -4,6 +4,6 @@ module.exports = (db_name) => {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
-        .then(()=> console.log(`Established connection to database ${db_name}`))
+        .then(()=> console.log(`Established connection to database`))
         .catch(()=> console.log('Problem with connection to database', err));
 }

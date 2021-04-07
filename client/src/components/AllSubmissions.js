@@ -21,7 +21,9 @@ const AllSubmissions = (props) => {
     }, []);
 
     const deleteSubmission = (id) => {
-        axios.delete("http://localhost:8000/api/submissions/" + id) 
+        axios.delete("http://localhost:8000/api/submissions/" + id, {
+            withCredentials: true
+        }) 
             .then((res) => {
                 const deletedSub = res.data;
                 console.log(deletedSub);

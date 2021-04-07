@@ -19,7 +19,9 @@ const OnePost = (props) => {
 
 
     const deletePost = (id) => {
-        axios.delete("http://localhost:8000/api/posts/" + id)
+        axios.delete("http://localhost:8000/api/posts/" + id, {
+            withCredentials: true
+        })
             .then((res) => {
                 const deletedPost = res.data;
                 console.log(deletedPost);

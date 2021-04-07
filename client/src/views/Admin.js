@@ -9,7 +9,10 @@ const Admin = () => {
 
     const logout = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/admin/logout')
+        axios.post('http://localhost:8000/api/admin/logout',{           
+        }, {
+            withCredentials: true,
+        })
         .then((response) => {
             console.log(response.data)
             navigate("/cuteinsurgence")})

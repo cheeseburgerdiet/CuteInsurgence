@@ -21,7 +21,7 @@ const AllPosts = (props) => {
     }, []);
 
     useEffect(() => {
-        // Init Tabs Materialize JS
+        // Init select Materialize JS
         let elems = document.querySelectorAll('select');
         M.FormSelect.init(elems);
     });

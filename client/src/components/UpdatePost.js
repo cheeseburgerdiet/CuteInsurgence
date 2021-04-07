@@ -36,7 +36,9 @@ const UpdatePost = (props) => {
             category: category,
             imageURL: imageURL,
             videoURL: videoURL,
-            description: description})
+            description: description}, {
+                withCredentials:true
+            })
             .then((response) => {
                 if (response.data.errors) {
                     console.log(response.data.errors)
