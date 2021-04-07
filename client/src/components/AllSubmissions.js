@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Col, Row, Select } from 'react-materialize';
+import M from 'materialize-css';
 
 const AllSubmissions = (props) => {
     const [allSubmissions, setAllSubmissions] = useState([]);
@@ -32,11 +33,17 @@ const AllSubmissions = (props) => {
             });
     }
 
+    useEffect(() => {
+        // Init select Materialize JS
+        let elems = document.querySelectorAll('select');
+        M.FormSelect.init(elems);
+    }, []);
+    
     return (
         <div>
-            <Row>
-                <Col className="input-field col s12">
-                    <Select className='bg-success w-50 mx-auto mb-2 ' type='category' name="category" value={categoryType} onChange={(e) => setCategoryType(e.target.value)} placeholder='Category' required>
+            <div>
+                <div className="input-field col s12">
+                    <select className='bg-success w-50 mx-auto mb-2 ' type='category' name="category" value={categoryType} onChange={(e) => setCategoryType(e.target.value)} placeholder='Category' required>
                         <option>Sort by</option>
                         <option value='Farm Animals'>Farm Animals</option>
                         <option value='Wildlife'>Wildlife</option>
@@ -47,11 +54,11 @@ const AllSubmissions = (props) => {
                         <option value='Fish'>Fish</option>
                         <option value='Bugs'>Bugs</option>
                         <option value='Rodents'>Rodents</option>
-                    </Select>
-                </Col>
-            </Row>
-            <Row>
-                <Col className="col s12">
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div className="col s12">
                     { categoryType === 'Sort by' ?
                         <div className='myscroll'>
                             {
@@ -60,35 +67,35 @@ const AllSubmissions = (props) => {
                                         <div>
                                             {element.imageURL? 
                                             <div>
-                                                <Row>
-                                                    <Col className= "col s12">
+                                                <div>
+                                                    <div className= "col s12">
                                                         <img src={element.imageURL} alt={element.title} className="thumbnail"/>
-                                                    </Col>
-                                                </Row>
-                                                <Row>
-                                                    <Col className= "col s12">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div className= "col s12">
                                                     <a href={element.imageURL} target="_blank" >Image URL</a>
-                                                    </Col>
-                                                </Row>
+                                                    </div>
+                                                </div>
                                             </div>
                                             : null
                                             }
                                             { element.videoURL?
                                                 <div>
-                                                    <Row>
-                                                        <Col className="col s12">
+                                                    <div>
+                                                        <div className="col s12">
                                                             <a href={element.videoURL}  target="_blank" >Video URL</a>
-                                                        </Col>
-                                                    </Row>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 :null
                                             }
-                                            <Row>
-                                                <Col className= "col s12">
+                                            <div>
+                                                <div className= "col s12">
                                                 <h6>Category: {element.category}</h6>
                                                 <p>Description: {element.description}</p>
-                                                </Col>
-                                            </Row>
+                                                </div>
+                                            </div>
                                             <p>Submitted by: {element.user}</p>
                                             <a className="waves-effect waves-teal btn-flat" onClick={()=> deleteSubmission(element._id)}>Delete</a>
                                         </div>
@@ -104,35 +111,35 @@ const AllSubmissions = (props) => {
                                         <div>
                                         {element.imageURL? 
                                             <div>
-                                                <Row>
-                                                    <Col className= "col s12">
+                                                <div>
+                                                    <div className= "col s12">
                                                         <img src={element.imageURL} className="thumbnail"/>
-                                                    </Col>
-                                                </Row>
-                                                <Row>
-                                                    <Col className= "col s12">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div className= "col s12">
                                                     <a href={element.imageURL} target="_blank" >Image URL</a>
-                                                    </Col>
-                                                </Row>
+                                                    </div>
+                                                </div>
                                             </div>
                                             : null
                                             }
                                             { element.videoURL?
                                                 <div>
-                                                    <Row>
-                                                        <Col className="col s12">
+                                                    <div>
+                                                        <div className="col s12">
                                                             <a href={element.videoURL}  target="_blank" >Video URL</a>
-                                                        </Col>
-                                                    </Row>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 :null
                                             }
-                                            <Row>
-                                                <Col className= "col s12">
+                                            <div>
+                                                <div className= "col s12">
                                                     <h6>Category: {element.category}</h6>
                                                     <p>Description: {element.description}</p>
-                                                </Col>
-                                            </Row>
+                                                </div>
+                                            </div>
                                             <p>Submitted by: {element.user}</p>
                                             <a className="waves-effect waves-teal btn-flat" onClick={()=> deleteSubmission(element._id)}>Delete</a>
                                         </div>
@@ -141,8 +148,8 @@ const AllSubmissions = (props) => {
                             }
                         </div>
                     }
-                </Col>
-            </Row>
+                </div>
+            </div>
         </div >
     )
 };

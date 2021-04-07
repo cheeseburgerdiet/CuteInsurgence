@@ -24,7 +24,7 @@ const onChange = (e) => {
 
 const submitForm = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8000/api/posts', state)
+    axios.post('http://localhost:8000/api/posts', state, {withCredentials: true})
         .then((res) => {
             console.log(res);
             if (res.data.errors) {
@@ -38,11 +38,11 @@ const submitForm = (e) => {
 };//end submitForm
 return(
     <div>
-        <Row>
+        <div>
             <form className="col s12" style={{backgroundColor: "white", borderRadius: "25px", padding: "15px 15px "}}onSubmit={submitForm}>
                     <h5>Create Post</h5>
-                <Row>
-                    <Col className="col s12">
+                <div>
+                    <div className="col s12">
                         <input
                             className="input-field "
                             type="text"
@@ -51,12 +51,12 @@ return(
                             onChange={onChange}
                             />
                         <label htmlFor="title">Title</label>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col className="col s12">
+                    </div>
+                </div>
+                <div>
+                    <div className="col s12">
                     <p>{errs.category ? (<span className='text-danger'>{errs.category.message}</span>) : null}</p>
-                        <Select
+                        <select
                         className="input-field "
                         name="category"
                         value={state.category}
@@ -72,11 +72,11 @@ return(
                             <option value='Fish'>Fish</option>
                             <option value='Bugs'>Bugs</option>
                             <option value='Rodents'>Rodents</option>
-                        </Select>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col className="col s12">
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <div className="col s12">
                         <input 
                             className="input-field"
                             type="text"
@@ -85,10 +85,10 @@ return(
                             onChange={onChange}
                         />
                         <label htmlFor="imageURL">image URL</label>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col className="col s12">
+                    </div>
+                </div>
+                <div>
+                    <div className="col s12">
                         <input 
                             className="input-field inline"
                             type="text"
@@ -97,10 +97,10 @@ return(
                             onChange={onChange}
                         />
                         <label htmlFor="videoURL">video URL</label>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col className="col s12">
+                    </div>
+                </div>
+                <div>
+                    <div className="col s12">
                         <textarea
                             className="materialize-textarea"
                             style={{borderRadius:"10px", height: "300px", border: "solid 2px lightblue"}}
@@ -110,13 +110,13 @@ return(
                             onChange={onChange}
                         />
                         <label htmlFor="description">description</label>
-                    </Col>
-                </Row>
+                    </div>
+                </div>
                 <button className="btn waves-effect blue waves-light" type="submit" name="action">Post!
                     <i className="material-icons right">send</i>
                 </button>
             </form>
-        </Row>
+        </div>
     </div>
     )
 };

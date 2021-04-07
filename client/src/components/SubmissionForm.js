@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import {Select, Row, Col} from 'react-materialize';
 import HappyEyes from '../images/HappyEyes.png';
+import M from "materialize-css";
 
 const SubmissionForm = () => {
     const [state, setState] = useState({
@@ -47,16 +48,23 @@ const SubmissionForm = () => {
             });
         };
     //end submitForm
+
+    useEffect(() => {
+        // Init FormSelect Materialize JS
+        let elems = document.querySelectorAll('select');
+        M.FormSelect.init(elems);
+    }, []);
+
     return (
         <div className="container">
-            <Row>
+            <div>
                 <form className="col s12" style={{ backgroundColor: "white", boxShadow: "#f18e14 0px 2px 25px 10px", borderRadius: "25px", paddingLeft: "50px"}} onSubmit={submitForm}>
-                <Row>
+                <div>
                     <h5 className="center-align ">Found something cute? Send it our way!</h5>
-                </Row>
-                <Row className="valign-wrapper">
-                    <Col className="input-field col s4">
-                        <Select 
+                </div>
+                <div className="valign-wrapper">
+                    <div className="input-field col s4">
+                        <select 
                         className="center-align"
                         name="category" 
                         value= {state.category} 
@@ -72,15 +80,15 @@ const SubmissionForm = () => {
                             <option value= 'Fish'>Fish</option>
                             <option value= 'Bugs'>Bugs</option>
                             <option value= 'Rodents'>Rodents</option>
-                        </Select>
+                        </select>
                         {errs.category ? (<span className='text-danger'>{errs.category.message}</span>) : null}
-                    </Col>
-                    <Col className="col s4 pull-s2">
+                    </div>
+                    <div className="col s4 pull-s2">
                         <img src={HappyEyes} alt="happy eyes" className="circle responsive-img"/>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col className="col s6 push-s3">
+                    </div>
+                </div>
+                <div>
+                    <div className="col s6 push-s3">
                         <input 
                             className="input-field center-align"
                             type='text' 
@@ -90,10 +98,10 @@ const SubmissionForm = () => {
                             placeholder='paste an image link here!'
                         />
                         <label htmlFor="imageURL">image URL</label>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col className="col s6 push-s3">
+                    </div>
+                </div>
+                <div>
+                    <div className="col s6 push-s3">
                         <input 
                             className="input-field center-align"    
                             type="text" 
@@ -103,10 +111,10 @@ const SubmissionForm = () => {
                             placeholder='paste a video link here!'
                         />
                         <label htmlFor="videoURL">video URL</label>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col className="col s12">
+                    </div>
+                </div>
+                <div>
+                    <div className="col s12">
                         <textarea
                             className="materialize-textarea center-align" style={{height: "400px", width: "400px", border: "solid 2px #f8ccbd", borderRadius: "25px"}}
                             name="description" 
@@ -114,10 +122,10 @@ const SubmissionForm = () => {
                             onChange={(e) => onChange(e)} 
                             placeholder='Tell us a little about your submission'
                         />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col className="col s6 push-s3">
+                    </div>
+                </div>
+                <div>
+                    <div className="col s6 push-s3">
                         <input 
                             className="input-field center-align"    
                             type="text" 
@@ -127,23 +135,23 @@ const SubmissionForm = () => {
                             placeholder='let us know your name or nickname!'
                         />
                         <label htmlFor="user">user name</label>
-                    </Col>
-                </Row>
+                    </div>
+                </div>
                     <p><span style={{margin: "5px", color:"orange"}}>Submit</span>
                         <button className="btn-floating btn-large orange pulse" type="submit" name="action">
                             <i className="material-icons right">send</i>
                         </button>
                     </p>
-                    <Row>
-                <Col className="col s8 push-s2">
+                    <div>
+                <div className="col s8 push-s2">
                     {confirmation?
                                 <h5 style={{color: 'green'}}>{confirmation}</h5>
                                 :null
                                 }
-                </Col>
-            </Row>
+                </div>
+            </div>
                 </form>
-            </Row>
+            </div>
         </div>
     )
 };

@@ -3,6 +3,7 @@ import axios from 'axios';
 import {  navigate } from '@reach/router';
 import {Row, Select} from 'react-materialize';
 import DropDown from './DropDown';
+import M from "materialize-css";
 
 const AllPosts = (props) => {
     const [allPosts, setAllPosts] = useState([]);
@@ -10,18 +11,26 @@ const AllPosts = (props) => {
     
     useEffect(()=> {
         axios.get("http://localhost:8000/api/posts")
-            .then((response) => {
-                console.log(response.data);
-                setAllPosts(response.data);
-            })
-            .catch(err=> console.log(err))
+        .then((response) => {
+            console.log(response.data);
+            setAllPosts(response.data);
+        })
+        .catch((err) => {
+            console.log("error with AllPosts.js" + err)
+        });
     }, []);
 
+    useEffect(() => {
+        // Init Tabs Materialize JS
+        let elems = document.querySelectorAll('select');
+        M.FormSelect.init(elems);
+    });
+
     return (
-        <div className= "container deep-orange lighten-4 componentBackground">
-            <Row>
-                <form className='col s2' style={{backgroundImage:"linear-gradient(to right ,darkorange, #ee5923, #ee6e73", borderRadius:"50px"}}>
-                    <Select
+        <div className= "container componentBackground">
+            <div>
+                <form className='custom-select col s2' style={{backgroundImage:"linear-gradient(to right ,darkorange, #ee5923, #ee6e73", borderRadius:"50px", width:"200px"}}>
+                    <select
                         type='category' 
                         name="category" 
                         value={categoryType} 
@@ -37,9 +46,9 @@ const AllPosts = (props) => {
                         <option value='Fish'>Fish</option>
                         <option value='Bugs'>Bugs</option>
                         <option value='Rodents'>Rodents</option>
-                    </Select> 
+                    </select> 
                 </form>
-            </Row>
+            </div>
             <div>
                 {categoryType === 'All Cuties' ? 
                     <div>

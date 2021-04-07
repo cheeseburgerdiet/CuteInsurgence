@@ -62,7 +62,7 @@ return (
                             <div className="row">
                                 <div className="col s12">
                                     <div className="col s6">
-                                        <img src={element.imageURL} thumbnail />
+                                        <img src={element.imageURL} alt="" className="thumbnail" />
                                     </div>
                                     <div className="col s6">
                                         <p>{element.category}</p>

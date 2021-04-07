@@ -15,7 +15,7 @@ const OnePost = (props) => {
                 console.log(singlePost);
                 setPost(singlePost);
             });
-    }, []);
+    }, [id]);
 
 
     const deletePost = (id) => {
