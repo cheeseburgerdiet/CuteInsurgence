@@ -1,24 +1,20 @@
 import React from 'react';
 import AboutInfo from '../components/AboutInfo';
 import SubmissionForm from '../components/SubmissionForm'
-import { Container, Row, Col} from 'react-bootstrap';
 
 const AboutUs = () => {
     return (
-        <div>
-            <Container className= 'cuteinsurgence-single-post'>
-                <Row> 
-                    <Col>
+        <div className="container componentBackground">
+                    <div className="section">
                         <AboutInfo />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
+                    </div>
+                <div className="divider"></div>
+                    <div className="section">
                         <SubmissionForm />
-                    </Col>
-                </Row>
-            </Container>
-        </div>
+                    </div>
+                
+            </div>
+        
     )
 };
 

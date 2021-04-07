@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, navigate } from '@reach/router';
-import { Button, Image } from 'react-bootstrap';
+import {Row, Col} from 'react-materialize';
+import {navigate} from '@reach/router';
 
 const OnePost = (props) => {
     const { id } = props;
@@ -9,14 +9,14 @@ const OnePost = (props) => {
     const [post, setPost] = useState({});
 
     useEffect(() => {
-        axios
-            .get("http://localhost:8000/api/posts/" + id)
+        axios.get("http://localhost:8000/api/posts/" + id)
             .then((res) => {
                 const singlePost = res.data;
                 console.log(singlePost);
                 setPost(singlePost);
             });
     }, []);
+
 
     const deletePost = (id) => {
         axios.delete("http://localhost:8000/api/posts/" + id)
@@ -28,24 +28,60 @@ const OnePost = (props) => {
             .catch((err) => {
                 console.log(err);
             });
-    }
+        }
 
     return (
-        <div className="cuteinsurgence-body-wrapper">
-            <div className="cuteinsurgence-single-post">
-                <Image src={post.imageURL} alt={post.title} fluid />
-                <h1> {post.title} </h1>
-                <div className="post-description">
-                    {post.description}
+        <div className="container whiteDivGoldShadow" style={{marginTop: "35px"}}>
+            {post.imageURL? 
+                <div>
+                    <Row>
+                        <Col className='col s12'>
+                            <h1> {post.title} </h1>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className="col s8 push-s2 ">
+                                <img className="post-image"
+                                    style={{marginTop:"40px"}}
+                                    src={post.imageURL}
+                                    alt={post.title}
+                                />
+                        </Col>
+                    </Row>
                 </div>
-                <div className="cuteinsurgence-single-btns-arrangment">
-                    <Button className="cuteinsurgence-single-post-btns"
-                        onClick={() => navigate(`/admin/update/${post._id}`)}
+                :null
+                }
 
-                    >update</Button>
-                    <Button onClick={() => deletePost(post._id)}>Delete</Button>
-                </div>
-            </div>
+                {post.videoURL?
+                    <div>
+                        <Row>
+                            <Col className= "col s12">
+                            <div className="video-container">
+                                <iframe width="853" height="480" src={post.videoURL} frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            </Col>
+                        </Row>
+                    </div>
+                    :null
+                }
+                    
+                    <Row>
+                        <Col className='col s12'>
+                            <div className="post-description">
+                                {post.description}
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className= "col s12" >
+                            
+                            
+                            <div className="right-align">
+                                <a className="btn-floating btn-large cyan pulse" style={{marginRight:"40px", marginBottom:"20px"}} href={`/admin/update/${post._id}`}><i className="material-icons">edit</i></a>
+                            </div>
+                            <button onClick={() => deletePost(post._id)}>Delete</button>
+                    </Col>
+                </Row>
         </div>
     )
 };

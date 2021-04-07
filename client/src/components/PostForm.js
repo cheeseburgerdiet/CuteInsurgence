@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import {Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { navigate } from '@reach/router';
+import { Select, Col, Row} from 'react-materialize';
+
 
 const PostForm = () =>{
     const [state, setState] = useState({
@@ -23,9 +24,7 @@ const onChange = (e) => {
 
 const submitForm = (e) => {
     e.preventDefault();
-    axios
-        .post('http://localhost:8000/api/posts', state)
-
+    axios.post('http://localhost:8000/api/posts', state)
         .then((res) => {
             console.log(res);
             if (res.data.errors) {
@@ -39,57 +38,87 @@ const submitForm = (e) => {
 };//end submitForm
 return(
     <div>
-        <Container className='w-100 mx-auto p-2 px-4 border border-dark'>
-        <p className='mb-1'>Post Form</p>
-            <Form onSubmit={submitForm}>
+        <Row>
+            <form className="col s12" style={{backgroundColor: "white", borderRadius: "25px", padding: "15px 15px "}}onSubmit={submitForm}>
+                    <h5>Create Post</h5>
                 <Row>
-                    <Col className='p-2'>
-                        <Form.Group as={Row} controlId='formTitle'>
-                            <Form.Label column sm="2">Title</Form.Label>
-                            <Col sm={10}>
-                                <Form.Control type='title' name="title" value = {state.title} onChange={(e) => onChange(e)} placeholder='Title' required />
-                                {errs.category ? (<span className='text-danger'>{errs.category.message}</span>) : null}
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as= {Row} controlId='formCategory'>
-                            <Form.Label column sm="2">Category</Form.Label>
-                            <Col sm={10}>
-                                <Form.Control as="select" type='category' name="category" value= {state.category} onChange={(e) => onChange(e)} placeholder='Category'>
-                                    <option>Select Category</option>
-                                    <option value= 'Farm Animals'>Farm Animals</option>
-                                    <option value= 'Wildlife'>Wildlife</option>
-                                    <option value='Dogs'>Dogs</option>
-                                    <option value= 'Cats'>Cats</option>
-                                    <option value= 'Birds'>Birds</option>
-                                    <option value= 'Reptiles'>Reptiles</option>
-                                    <option value= 'Fish'>Fish</option>
-                                    <option value= 'Bugs'>Bugs</option>
-                                    <option value= 'Rodents'>Rodents</option>
-                                </Form.Control>
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as={Row} controlId='formImageURL'>
-                            <Form.Label column sm="2">imageURL</Form.Label>
-                            <Col sm={10}>
-                                <Form.Control type='imageURL' name="imageURL" value = {state.imageURL} onChange={(e) => onChange(e)}  placeholder='imageURL' />
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as={Row} controlId='formVideoURL'>
-                            <Form.Label column sm="2" >videoURL</Form.Label>
-                            <Col sm={10}>
-                                <Form.Control type='videoURL' name="videoURL" value = {state.videoURL} onChange={(e) => onChange(e)} placeholder='videoURL' />
-                            </Col>
-                        </Form.Group>
-                        <Form.Group className=' border border-dark' controlId='textarea'>
-                            <Form.Control as="textarea" rows={7} type='description' name="description" value = {state.description} onChange={(e) => onChange(e)}  placeholder='description' />
-                        </Form.Group>
-                        <Button variant='success' type='submit'>submit</Button>
+                    <Col className="col s12">
+                        <input
+                            className="input-field "
+                            type="text"
+                            name="title"
+                            value={state.title}
+                            onChange={onChange}
+                            />
+                        <label htmlFor="title">Title</label>
                     </Col>
                 </Row>
-            </Form>
-        </Container>
+                <Row>
+                    <Col className="col s12">
+                    <p>{errs.category ? (<span className='text-danger'>{errs.category.message}</span>) : null}</p>
+                        <Select
+                        className="input-field "
+                        name="category"
+                        value={state.category}
+                        onChange={onChange}
+                            >
+                            <option>Select Category</option>
+                            <option value='Farm Animals'>Farm Animals</option>
+                            <option value='Wildlife'>Wildlife</option>
+                            <option value='Dogs'>Dogs</option>
+                            <option value='Cats'>Cats</option>
+                            <option value='Birds'>Birds</option>
+                            <option value='Reptiles'>Reptiles</option>
+                            <option value='Fish'>Fish</option>
+                            <option value='Bugs'>Bugs</option>
+                            <option value='Rodents'>Rodents</option>
+                        </Select>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col className="col s12">
+                        <input 
+                            className="input-field"
+                            type="text"
+                            name="imageURL"
+                            value={state.imageURL}
+                            onChange={onChange}
+                        />
+                        <label htmlFor="imageURL">image URL</label>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col className="col s12">
+                        <input 
+                            className="input-field inline"
+                            type="text"
+                            name="videoURL"
+                            value={state.videoURL}
+                            onChange={onChange}
+                        />
+                        <label htmlFor="videoURL">video URL</label>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col className="col s12">
+                        <textarea
+                            className="materialize-textarea"
+                            style={{borderRadius:"10px", height: "300px", border: "solid 2px lightblue"}}
+                            type="text"
+                            name="description"
+                            value={state.description}
+                            onChange={onChange}
+                        />
+                        <label htmlFor="description">description</label>
+                    </Col>
+                </Row>
+                <button className="btn waves-effect blue waves-light" type="submit" name="action">Post!
+                    <i className="material-icons right">send</i>
+                </button>
+            </form>
+        </Row>
     </div>
-)
+    )
 };
 
 export default PostForm;

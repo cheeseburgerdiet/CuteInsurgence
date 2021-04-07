@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Row, Col, Form, Button, Dropdown, DropdownButton, Image } from 'react-bootstrap';
 import { navigate } from '@reach/router';
 
 const DropDown = (props) => {
@@ -8,6 +7,7 @@ const DropDown = (props) => {
 const [allSubmissions, setAllSubmissions] = useState([]);
 const [allSortSubmissions, setAllSortSubmissions] = useState([]);
 const [categoryType, setCategoryType] = useState('Sort by');
+
 useEffect(() => {
     axios
         .get("http://localhost:8000/api/posts")
@@ -36,7 +36,12 @@ useEffect(() => {
 
 return (
     <div className='w-100 mx-auto p-2 px-4 border border-dark'>
-        <Form.Control className='bg-success w-50 mx-auto' as="select" type='category' name="category" value={categoryType} onChange={(e) => setCategoryType(e.target.value)} placeholder='Category' required>
+        <select className='bg-success w-50 mx-auto' 
+            type='category' 
+            name="category" 
+            value={categoryType} 
+            onChange={(e) => setCategoryType(e.target.value)} 
+            placeholder='Category' required>
             <option>Sort by</option>
             <option value='Farm Animals'>Farm Animals</option>
             <option value='Wildlife'>Wildlife</option>
@@ -47,26 +52,26 @@ return (
             <option value='Fish'>Fish</option>
             <option value='Bugs'>Bugs</option>
             <option value='Rodents'>Rodents</option>
-        </Form.Control>
+        </select>
         <h4>You selected {categoryType}</h4>
         { categoryType === 'Sort by'?
             <div>
                 {
                     allSubmissions.map((element, index) => (
                         <div key={index} className='border border-dark mb-2 p-1'>
-                            <Container>
-                                <Row>
-                                    <Col xs={6} md={4}>
-                                        <Image src={element.imageURL} thumbnail />
-                                    </Col>
-                                    <Col xs={6} md={4}>
+                            <div className="row">
+                                <div className="col s12">
+                                    <div className="col s6">
+                                        <img src={element.imageURL} thumbnail />
+                                    </div>
+                                    <div className="col s6">
                                         <p>{element.category}</p>
                                         <p>{element.description}</p>
-                                    </Col>
-                                </Row>
+                                    </div>
+                                </div>
                                 <p>Submitted by: {element.user}</p>
-                                <Button className='p-1 m-1' variant='secondary' >Delete</Button>
-                            </Container>
+                                <button className='p-1 m-1' variant='secondary' >Delete</button>
+                            </div>
                         </div>
                     ))
                 }
@@ -76,19 +81,19 @@ return (
                 {
                     allSortSubmissions.map((element, index) => (
                         <div key={index} className='border border-dark mb-2 p-1'>
-                            <Container>
-                                <Row>
-                                    <Col xs={6} md={4}>
-                                        <Image src={element.imageURL} thumbnail />
-                                    </Col>
-                                    <Col xs={6} md={4}>
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col s6">
+                                        <img src={element.imageURL} thumbnail />
+                                    </div>
+                                    <div className="col s6">
                                         <p>{element.category}</p>
                                         <p>{element.description}</p>
-                                    </Col>
-                                </Row>
+                                    </div>
+                                </div>
                                 <p>Submitted by: {element.user}</p>
-                                <Button className='p-1 m-1' variant='secondary' >Delete</Button>
-                            </Container>
+                                <button className='p-1 m-1' variant='secondary' >Delete</button>
+                            </div>
                         </div>
                     ))
                 }
