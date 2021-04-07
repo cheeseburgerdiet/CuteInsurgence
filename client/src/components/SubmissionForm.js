@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import axios from 'axios';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import { navigate } from '@reach/router';
+import {Select, Row, Col} from 'react-materialize';
+import HappyEyes from '../images/HappyEyes.png';
+import M from "materialize-css";
 
 const SubmissionForm = () => {
     const [state, setState] = useState({
@@ -23,8 +24,7 @@ const SubmissionForm = () => {
 
     const submitForm = (e) => {
         e.preventDefault();
-        axios
-            .post('http://localhost:8000/api/posts', state)
+        axios.post('http://localhost:8000/api/submissions', state)
             .then((res) => {
                 console.log(res);
                 if (res.data.errors) {
@@ -48,71 +48,110 @@ const SubmissionForm = () => {
             });
         };
     //end submitForm
+
+    useEffect(() => {
+        // Init FormSelect Materialize JS
+        let elems = document.querySelectorAll('select');
+        M.FormSelect.init(elems);
+    }, []);
+
     return (
-        <div>
-            <Container className='w-100 mx-auto p-2 px-4 border border-dark'>
-                <Row>
-                    <Col>
+        <div className="container">
+            <div>
+                <form className="col s12" style={{ backgroundColor: "white", boxShadow: "#f18e14 0px 2px 25px 10px", borderRadius: "25px", paddingLeft: "50px"}} onSubmit={submitForm}>
+                <div>
+                    <h5 className="center-align ">Found something cute? Send it our way!</h5>
+                </div>
+                <div className="valign-wrapper">
+                    <div className="input-field col s4">
+                        <select 
+                        className="center-align"
+                        name="category" 
+                        value= {state.category} 
+                        onChange={(e) => onChange(e)}
+                        >
+                            <option>Select Category</option>
+                            <option value= 'Farm Animals'>Farm Animals</option>
+                            <option value= 'Wildlife'>Wildlife</option>
+                            <option value='Dogs'>Dogs</option>
+                            <option value= 'Cats'>Cats</option>
+                            <option value= 'Birds'>Birds</option>
+                            <option value= 'Reptiles'>Reptiles</option>
+                            <option value= 'Fish'>Fish</option>
+                            <option value= 'Bugs'>Bugs</option>
+                            <option value= 'Rodents'>Rodents</option>
+                        </select>
+                        {errs.category ? (<span className='text-danger'>{errs.category.message}</span>) : null}
+                    </div>
+                    <div className="col s4 pull-s2">
+                        <img src={HappyEyes} alt="happy eyes" className="circle responsive-img"/>
+                    </div>
+                </div>
+                <div>
+                    <div className="col s6 push-s3">
+                        <input 
+                            className="input-field center-align"
+                            type='text' 
+                            name="imageURL" 
+                            value= {state.imageURL} 
+                            onChange={(e) => onChange(e)} 
+                            placeholder='paste an image link here!'
+                        />
+                        <label htmlFor="imageURL">image URL</label>
+                    </div>
+                </div>
+                <div>
+                    <div className="col s6 push-s3">
+                        <input 
+                            className="input-field center-align"    
+                            type="text" 
+                            name="videoURL" 
+                            value= {state.videoURL} 
+                            onChange={(e) => onChange(e)} 
+                            placeholder='paste a video link here!'
+                        />
+                        <label htmlFor="videoURL">video URL</label>
+                    </div>
+                </div>
+                <div>
+                    <div className="col s12">
+                        <textarea
+                            className="materialize-textarea center-align" style={{height: "400px", width: "400px", border: "solid 2px #f8ccbd", borderRadius: "25px"}}
+                            name="description" 
+                            value= {state.description} 
+                            onChange={(e) => onChange(e)} 
+                            placeholder='Tell us a little about your submission'
+                        />
+                    </div>
+                </div>
+                <div>
+                    <div className="col s6 push-s3">
+                        <input 
+                            className="input-field center-align"    
+                            type="text" 
+                            name="user" 
+                            value= {state.user} 
+                            onChange={(e) => onChange(e)} 
+                            placeholder='let us know your name or nickname!'
+                        />
+                        <label htmlFor="user">user name</label>
+                    </div>
+                </div>
+                    <p><span style={{margin: "5px", color:"orange"}}>Submit</span>
+                        <button className="btn-floating btn-large orange pulse" type="submit" name="action">
+                            <i className="material-icons right">send</i>
+                        </button>
+                    </p>
+                    <div>
+                <div className="col s8 push-s2">
                     {confirmation?
-                        <h4 style={{color: 'green'}}>{confirmation}</h4>
-                        :null
-                        }
-                    </Col>
-                </Row>
-                <Form onSubmit={submitForm}>
-                    <Row>
-                        <Col className='p-2 m-2'>
-                            <Form.Group as={Row} controlId='formCategory'>
-                                <Form.Label column sm="2">Category</Form.Label>
-                                <Col sm="10">
-                                    <Form.Control as="select" type='category' name="category" value= {state.category} onChange={(e) => onChange(e)} placeholder='Category'>
-                                        <option>Select Category</option>
-                                        <option value= 'Farm Animals'>Farm Animals</option>
-                                        <option value= 'Wildlife'>Wildlife</option>
-                                        <option value='Dogs'>Dogs</option>
-                                        <option value= 'Cats'>Cats</option>
-                                        <option value= 'Birds'>Birds</option>
-                                        <option value= 'Reptiles'>Reptiles</option>
-                                        <option value= 'Fish'>Fish</option>
-                                        <option value= 'Bugs'>Bugs</option>
-                                        <option value= 'Rodents'>Rodents</option>
-                                    </Form.Control>
-                                    {errs.category ? (<span className='text-danger'>{errs.category.message}</span>) : null}
-                                </Col>
-                            </Form.Group>
-                            <Form.Group as={Row} controlId='formImageURL'>
-                                <Form.Label column sm="2">imageURL</Form.Label>
-                                <Col sm="10">
-                                    <Form.Control type='imageURL' name="imageURL" value= {state.imageURL} onChange={(e) => onChange(e)} placeholder='paste an image link here!'/>
-                                </Col>
-                            </Form.Group>
-                            <Form.Group as={Row}  controlId='formVideoURL'>
-                                <Form.Label column sm="2">videoURL</Form.Label>
-                                <Col sm="10">
-                                    <Form.Control type="videoURL" name="videoURL" value= {state.videoURL} onChange={(e) => onChange(e)} placeholder='paste a video link here!' />
-                                </Col>
-                            </Form.Group>
-                            <Form.Group as={Row} controlId='formUser'>
-                                <Form.Label column sm="2">User</Form.Label>
-                                <Col sm="10">
-                                    <Form.Control type='user' name="user" value= {state.user} onChange={(e) => onChange(e)} placeholder='your name/nickname'  />
-                                </Col>
-                            </Form.Group>
-                        </Col>
-                        <Col className='p-1 m-1'>
-                            <Form.Group className=' border border-dark' controlId='textarea'>
-                                <Form.Control as="textarea" rows={5} type='description' name="description" value= {state.description} onChange={(e) => onChange(e)} placeholder='Tell us a little about your submission' />
-                            </Form.Group>
-                            <Form.Group as={Row} controlId='formButton'>
-                                <Form.Label column sm="9"></Form.Label>
-                                <Col sm="3">
-                                    <Button variant='success' type='submit'>submit</Button>
-                                </Col>
-                            </Form.Group>
-                        </Col>
-                    </Row>
-                </Form>
-            </Container>
+                                <h5 style={{color: 'green'}}>{confirmation}</h5>
+                                :null
+                                }
+                </div>
+            </div>
+                </form>
+            </div>
         </div>
     )
 };

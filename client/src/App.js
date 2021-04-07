@@ -1,6 +1,5 @@
 import './App.css';
 import React from 'react';
-import {Container} from 'react-bootstrap';
 import { Router } from '@reach/router';
 import Header from './views/Header';
 import AllPosts from './components/AllPosts';
@@ -14,7 +13,6 @@ import UpdatePost from './components/UpdatePost';
 function App() {
   return (
     <div className="App">
-      <Container>
         <Header />
         <Router>
           <AllPosts path='/cuteinsurgence' />
@@ -24,7 +22,6 @@ function App() {
           <Admin path='/admin/home' />
           <UpdatePost path='/admin/update/:id' />
         </Router>
-      </Container>
     </div>
   );
 }

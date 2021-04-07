@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { navigate, Link, } from '@reach/router';
-import { Form, Row, Col, Container, Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 const AdminLogin = (props) => {
@@ -15,7 +13,8 @@ const AdminLogin = (props) => {
         axios.post('http://localhost:8000/api/admin/login', {
             name: name,
             password: password
-        })
+        },
+        { withCredentials : true})
             .then(response => {
                 console.log("login data", response.data);
                 navigate(`/admin/home`)
@@ -26,38 +25,37 @@ const AdminLogin = (props) => {
             })
     };
     return (
-        <div>
-            <Container>
-                <Row className="justify-content-md-center">
-                    <Col xs={6} >
+        <div className= "container blue lighten-4 blue-text text-darken-2" style={{borderRadius: "25px", padding: "15px", marginTop: "25px", boxShadow: "#fbe9e7 0px 30px 90px"
+        }}>
+            <div className= "row">
+                <div className="col s6">
                         <p><Link to='/admin/home'>Admin Home</Link></p>
                         <p>{errMessage ? errMessage : ""}</p>
-                        <Form onSubmit={login}>
-                            <h1>Welcome Back! Please log in </h1>
-                            <Form.Group controlId="formAdminName">
-                                <Form.Label>Admin Name:</Form.Label>
-                                <Form.Control
+                        <form onSubmit={login}>
+                            <h3>Welcome Back! Please log in </h3>
+                            <div className="input-field col s12 input-field input[type=text]:focus">
+                                <input
                                     type="text"
                                     placeholder="Enter Admin Name"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)} />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicPassword">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control
+                                    <label>Admin Name:</label>
+                            </div>
+                            <div className="input-field col s12 blue-field">  
+                                <input
                                     type="password"
                                     placeholder="Password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)} />
-                            </Form.Group>
-                            <Button variant="primary" type="submit">
-                                Submit
-                            </Button>
-                        </Form>
-                    </Col>
-                </Row>
-            </Container>
-        </div>
+                                <label>Password:</label>
+                            </div>
+                            <button className="btn waves-effect waves-light blue" type="submit" name="action">Submit
+                                <i className="material-icons right">send</i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
     )
 };
 

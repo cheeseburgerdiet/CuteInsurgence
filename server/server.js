@@ -1,17 +1,17 @@
 const express = require('express');
-const cors = require ('cors');
+const cors = require('cors');
 const app = express();
-const port = 8000;
+const cookieParser = require('cookie-parser');
 
-app.use(cors());
+app.use(cookieParser());
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true}));
+app.use(express.urlencoded({extended :true}));
 
-require('./config/mongoose.config');
-require('./routes/admin.routes')(app);
+require('dotenv').config();
+require('./config/mongoose.config')(process.env.DB_NAME);
 require('./routes/post.routes')(app);
 require('./routes/submission.routes')(app);
+require('./routes/admin.routes')(app);
 
-
-app.listen(port, () => 
-    console.log(`listening on port: ${port}`));
+app.listen(process.env.DB_PORT, () => console.log(`Listening on port: ${process.env.DB_PORT}`));
