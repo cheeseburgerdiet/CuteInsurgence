@@ -30,7 +30,7 @@ const AllPosts = (props) => {
 
     return (
         <div className= "container componentBackground">
-            <div>
+            <Row>
                 <form className='custom-select col s2' style={{backgroundImage:"linear-gradient(to right ,darkorange, #ee5923, #ee6e73", borderRadius:"50px", width:"200px", paddingLeft: "20px"}}>
                     <select
                         type='category' 

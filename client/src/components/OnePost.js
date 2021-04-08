@@ -95,22 +95,35 @@ const OnePost = (props) => {
                     <Row>
                         {admin?
                             <div>
-                                <Col className= "col s12 push-s4" >
-                                    <button style={{margin: "10px"}} onClick={() => navigate(`/admin/update/${post._id}`)}class="btn-small waves-effect green waves-light" type="submit" name="action">Edit
-                                    <i class="material-icons right">edit</i>
+                                <Row>
+                                    <Col className= "col s8" >
+                                        <button 
+                                        style={{ marginBottom: "20px", borderRadius: "16px" }}
+                                        className="btn btn-small aqua lighten-1 waves-effect waves-light"
+                                        onClick={() => navigate(`/admin/update/${post._id}`)}
+                                        type="submit" 
+                                        name="action"
+                                        >
+                                            Edit
+                                        <i class="material-icons right">edit</i>
+                                        </button>
+                                    </Col>
+                                    <Col>
+                                    <button 
+                                        style={{ marginBottom: "20px", borderRadius: "16px" }}
+                                        className="btn btn-small pink lighten-2 waves-effect waves-light"
+                                        onClick={() => deletePost(post._id)}
+                                        type="submit" 
+                                        name="action"
+                                        >Delete
+                                        <i class="material-icons right">delete</i>
                                     </button>
-                                    <button onClick={() => deletePost(post._id)}class="btn-small waves-effect red waves-light" type="submit" name="action">Delete
-                                    <i class="material-icons right">delete</i>
-                                    </button>
-                                </Col>
+                                    </Col>
+                                </Row>
                             </div>
+                            :null
+                        }
 
-                            <button 
-                                style={{ marginBottom: "20px", borderRadius: "16px" }}
-                                className="btn btn-small pink darken-1 waves-effect waves-light"
-                                onClick={() => deletePost(post._id)}>Delete
-                            </button>
-                    </Col>
                 </Row>
         </div>
     )
